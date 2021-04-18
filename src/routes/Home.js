@@ -1,4 +1,4 @@
-import {ALink} from '../styles/globalStyles';
+import {ALink} from '../styles/globalStylesComponent';
 
 
 const Home = ()=>{

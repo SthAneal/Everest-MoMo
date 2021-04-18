@@ -1,0 +1,33 @@
+$Black_Coffee : #322C2C;
+$Ruby_Red: #A01D28;
+$White:#FFFFFF;
+$Cultured:#F7F7F7;
+$Space_cadet:#29335C;
+
+.main-background{
+    background-color: $Cultured;
+}
+
+.nav-bar{
+    background-color: $Space_cadet;
+    &>div>div{
+        width: 60px;
+        height: 60px;
+        background-color: $Cultured;
+        color: $Black_Coffee;
+        border-radius: 100%;
+        text-align: center;
+        line-height: 60px;
+        margin-bottom: 50px;
+        float: left;
+        &:hover{
+            color: $Ruby_Red;
+        }
+        &~span{
+            display: inline-block;
+            line-height: 60px;
+            margin-left: 22px;
+            color: $Cultured;
+        }
+    }
+}
