@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Route, Switch, Link} from 'react-router-dom';
+import {Provider as PostProvider} from './context/PostContext';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+import FrontPage from './routes/FrontPage';
+import Admin from './routes/Admin';
+import Error from './routes/Error';
+
+
+const App = ()=>{
+  return(
+      <Switch>
+        <PostProvider>
+          <Route path="/" component={FrontPage} exact/>
+        </PostProvider>
+        <Route path="/admin" component={Admin}/>
+        <Route component={Error}/>
+      </Switch>
   );
-}
+};
 
 export default App;
