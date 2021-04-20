@@ -8,6 +8,17 @@ import About from './About';
 import Menu from './Menu';
 import Contact from './Contact';
 
+import logo from '../assets/logo.png'
+
+import { ReactComponent as HomeIcon} from '../assets/home.svg';
+import { ReactComponent as AboutusIcon} from '../assets/table.svg';
+import { ReactComponent as MenuIcon} from '../assets/menu.svg';
+import { ReactComponent as ContactIcon} from '../assets/contact.svg';
+import { ReactComponent as TakeawayIcon} from '../assets/takeaway.svg';
+
+
+
+
 
 const FrontPage = ()=>{
     const {state, changeRoute} = useContext(PostContext);
@@ -29,19 +40,23 @@ const FrontPage = ()=>{
     }
 
     return(
-        <FlexDiv className="main-background" height="100%">
-            <FlexDiv width="20%" height="100%">
-                <FlexDiv direction="column" width="100%" height="100%" padding="1em" className="nav-bar" justifyContent="flex-start" alignItem="center">
-                    <div onClick={()=>{changeRoute('home')}}><div></div><span>Home</span></div> 
-                    <div onClick={()=>{changeRoute('about')}}><div></div><span>About</span></div> 
-                    <div onClick={()=>{changeRoute('menu')}}><div></div><span>Menu</span></div> 
-                    <div onClick={()=>{changeRoute('contact')}}><div></div><span>Contact</span></div> 
+        <FlexDiv className="main-background" Height="100%">
+            <FlexDiv Width="10%" minWidth="70px" maxWidth="150px" Height="100%">
+                <FlexDiv direction="column" Width="100%" Height="100%" padding="1em 0 0 0" className="nav-bar" justifyContent="flex-start" alignItem="stretch">
+                    <FlexDiv onClick={()=>{changeRoute('home')}} justifyContent="center" className="cursor-pointer"><img src={logo}/></FlexDiv> 
+                    <FlexDiv onClick={()=>{changeRoute('home')}} direction="column" alignItem="center" className="selected"><span><HomeIcon/></span><span>Home</span></FlexDiv> 
+                    <FlexDiv onClick={()=>{changeRoute('about')}} direction="column" alignItem="center"><span><AboutusIcon/></span><span>About us</span></FlexDiv> 
+                    <FlexDiv onClick={()=>{changeRoute('menu')}} direction="column" alignItem="center"><span><MenuIcon/></span><span>Menu</span></FlexDiv> 
+                    <FlexDiv onClick={()=>{changeRoute('contact')}} direction="column" alignItem="center"><span><TakeawayIcon/></span><span>Take away</span></FlexDiv> 
+                    <FlexDiv onClick={()=>{changeRoute('contact')}} direction="column" alignItem="center"><span><ContactIcon/></span><span>Contact</span></FlexDiv> 
                 </FlexDiv>
             </FlexDiv>
-            <FlexDiv width="60%">
-                {renderPage()}
+            <FlexDiv  flexWrap="wrap" Height="100%" overflowY="scroll" flexGrow="1" padding="0 0.8em">
+                <FlexDiv className="content-body" padding="2em 4em" Height="100%"  Width="70%" minWidth="375px" borderRadius="3em 3em 0 0">
+                    {renderPage()}
+                </FlexDiv>
+                <FlexDiv className="side-bar"  Width="30%" minWidth="208px">right bar</FlexDiv>
             </FlexDiv>
-            <FlexDiv width="20%">right bar</FlexDiv>
         </FlexDiv>
     )
 }
