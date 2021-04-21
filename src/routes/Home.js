@@ -1,11 +1,17 @@
-import {ALink} from '../styles/globalStylesComponent';
-
+import {FlexDiv, FlexChild} from '../styles/globalStylesComponent';
+import Slider from '../components/slider';
 
 const Home = ()=>{
     return(
-        <div>
-            this is home alone
-        </div>
+        <FlexDiv direction="column">
+            <FlexDiv Width="100%" Height="400px">
+                <Slider/>
+            </FlexDiv>
+
+            <FlexDiv Width="100%">
+                this is rest of container
+            </FlexDiv>
+        </FlexDiv>
     )
 }
 

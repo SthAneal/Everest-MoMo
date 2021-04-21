@@ -1,7 +1,8 @@
 $Black_Coffee : #514c4e;
 $Ruby_Red: #A01D28;
-$White:#F8FAFF;
-$Cultured:#dee8ff;
+$White:#ffffff;
+$Cultured:#eff3ff;
+$Sidebar_White:#f6f7fb;
 $Space_cadet:#29335C;
 
 .transition{
@@ -15,11 +16,11 @@ $Space_cadet:#29335C;
     cursor: pointer;
 }
 .main-background{
-    background-color: $White;
+    background-color: $Cultured;
 }
 
 .nav-bar{
-    background-color: $White;
+    background-color: $Cultured;
     &>div:first-child{
         padding: 0.8em;
         margin: 0 0 4em;
@@ -30,7 +31,7 @@ $Space_cadet:#29335C;
     &>div:not(:first-child){
         padding:1em;
         &:not(:last-child){
-            border-bottom: 1px solid #514c4e29;
+            border-bottom: 1px solid #514c4e14;
         }
         &>span{
             color: $Black_Coffee;
@@ -55,7 +56,7 @@ $Space_cadet:#29335C;
                 
             }
             &:last-child{
-                display: block;
+                display: none;
             }
         }
         &:hover {
@@ -99,10 +100,13 @@ $Space_cadet:#29335C;
 }
 
 .content-body{
-    background-color: $Cultured;
     box-shadow: 0px 4px 15px -8px #000000d6;
 }
 
-.side-bar{
+.main-body{
     background-color: $White;
+}
+
+.side-bar{
+    background-color: $Sidebar_White;
 }

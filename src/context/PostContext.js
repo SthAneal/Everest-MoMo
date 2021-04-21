@@ -18,4 +18,4 @@ const changeRoute = (dispatch)=>{
 
 
 
-export const {Context, Provider} = CreateDataContext(postReducer, {changeRoute},{route:'home'});
+export const {Context, Provider} = CreateDataContext(postReducer, {changeRoute},{route:'home',posts:[{}]});

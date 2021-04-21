@@ -21,6 +21,7 @@ const FlexDiv = styled.div`
     justify-content: ${props=>props.justifyContent || "flex-start"};
     align-items: ${props=>props.alignItem || "flex-start"};
     padding:${props=>props.padding || "0 0 0 0"};
+    margin:${props=>props.margin || "0 0 0 0"};
     border-radius:${props=>props.borderRadius || "0 0 0 0 "};
     overflow-x:${props=>props.overflowX || "hidden"};
     overflow-y:${props=>props.overflowY || "hidden"};
