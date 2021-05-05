@@ -16,10 +16,6 @@ import { ReactComponent as MenuIcon} from '../assets/menu.svg';
 import { ReactComponent as ContactIcon} from '../assets/contact.svg';
 import { ReactComponent as TakeawayIcon} from '../assets/takeaway.svg';
 
-
-
-
-
 const FrontPage = ()=>{
     const {state, changeRoute} = useContext(PostContext);
     const route = state.route;
