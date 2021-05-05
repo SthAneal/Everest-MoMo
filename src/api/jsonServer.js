@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 export default Axios.create({
-    baseURL:"https://a16491b6bc5c.ngrok.io",
+    baseURL:"https://8c35bca30f48.ngrok.io",
     withCredentials: false,
     headers:{
         'Access-Control-Allow-Origin':'*',

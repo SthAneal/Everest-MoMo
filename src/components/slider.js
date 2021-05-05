@@ -40,28 +40,28 @@ export default class Slider extends React.Component{
     componentDidUpdate(){
         window.addEventListener('resize', this.handleResize);
         this.setTimeOutId = setTimeout(()=>{
-            this.animateSlider(-1, 2000, 4000);
+            this.animateRequestId = this.animateSlider(-1, 2000, 4000);
         },1000);
-
-        // calling a callback into useEffect, calls it as clear event call backs
-        return _=>{
-            window.removeEventListener('resize', this.handleResize);
-            clearTimeout(this.setTimeOutId);    
-            cancelAnimationFrame(this.animateRequestId);
-            console.log('hellllllooo');
-        }
     }
-
+    
 
     // handle the resizing of the slider items when changing the viewport or any kind of rotation detection.
     handleResize(){
+        window.removeEventListener('resize', this.handleResize);    
+        if(this.animateRequestId)
+            cancelAnimationFrame(this.animateRequestId);
+        
+        if(this.setTimeOutId)
+            clearTimeout(this.setTimeOutId);    
+
         // the sliderWrapperWidth should be equal to the width of the slider items as it is going to fit and display only one item at a time.
         let sliderWrapperWidth = document.querySelector(`${this.parentWrapper} .sliderWrapper`).offsetWidth;
         this.setState({
             sliderWrapperWidth,
             sliderWidth: sliderWrapperWidth * this.noOfSlides
         }, ()=>{
-            this.sliderInitialLeftInset = parseFloat(getComputedStyle(this.targetSliderElem).left);
+            this.sliderInitialLeftInset = 0;
+            this.sliderMoveFromInitialPos = 0;
         });
     }
 
@@ -82,6 +82,7 @@ export default class Slider extends React.Component{
         cancelAnimationFrame(this.animateRequestId);
         let start = performance.now();
         this.direction = direction;
+
         const animate = (time)=>{
             let timeFraction = (time - start) / duration;
             if(timeFraction > 1){
@@ -132,7 +133,7 @@ export default class Slider extends React.Component{
                 }, delay);
             }
         }
-        
+
         this.animateRequestId = requestAnimationFrame(animate);
         
     }

@@ -3,17 +3,12 @@ import {Context as PostContext} from  '../context/PostContext';
 import {FlexDiv, FlexChild} from '../styles/globalStylesComponent';
 import Slider from '../components/Slider';
 
-
 const Home = ()=>{
     const {state, getPostByAliasName} = useContext(PostContext);
     useEffect(()=>{
         if(!state.slider)
             getPostByAliasName('slider');
     },[]);
-
-
-
-
 
     return(
         <FlexDiv direction="column">
@@ -24,13 +19,6 @@ const Home = ()=>{
             <FlexDiv Width="100%" flexWrap="nowrap" position="relative" id="sliderB">
                     {state.slider?<Slider parentWrapper="#sliderB" data={state.slider}/> : <div>Loading...</div>}
             </FlexDiv>
-
-
-
-
-           
-
-
         </FlexDiv>
     )
 }
