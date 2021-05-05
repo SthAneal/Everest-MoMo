@@ -11,13 +11,12 @@ const Home = ()=>{
     },[]);
 
     return(
-        <FlexDiv direction="column">
-            <FlexDiv Width="100%" flexWrap="nowrap" position="relative" id="sliderA">
-                    {state.slider?<Slider parentWrapper="#sliderA" data={state.slider}/> : <div>Loading...</div>}
+        <FlexDiv direction="column" padding="1em">
+            <FlexDiv Width="100%" minHeight="300px" flexWrap="nowrap" borderRadius="4px" position="relative" id="sliderA">
+                    {state.slider?<Slider parentWrapper="#sliderA" data={state.slider}/> : <FlexDiv className="font-size-loading" alignItem="center" justifyContent="center" Height="100%">Loading...</FlexDiv>}
             </FlexDiv>
-
-            <FlexDiv Width="100%" flexWrap="nowrap" position="relative" id="sliderB">
-                    {state.slider?<Slider parentWrapper="#sliderB" data={state.slider}/> : <div>Loading...</div>}
+            <FlexDiv>
+                this is the rest.
             </FlexDiv>
         </FlexDiv>
     )

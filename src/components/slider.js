@@ -17,7 +17,7 @@ export default class Slider extends React.Component{
 
         // basic parameters of slider.
         this.parentWrapper = this.props.parentWrapper;
-        this.targetSliderElem = null; // ==================> may be i need to put it into the componentDidMount.
+        this.targetSliderElem = null;
         this.direction = -1;
         this.noOfSlides = this.props.data.gallery.length;
         this.sliderInitialLeftInset = 0;
