@@ -7,6 +7,8 @@ const Cultured = '#F7F7F7';
 const Space_cadet = '#29335C';
 
 const FlexDiv = styled.div`
+    position: ${props=>props.position || "inherit"};
+    inset: ${props=>props.inset || "inherit"};
     flex-direction:${props=>props.direction || "row"};
     display:flex;
     flex: ${props=>props.flexCount || "inherit"};
@@ -34,6 +36,5 @@ const FlexChild = styled.div`
     padding:${props=>props.padding || "0 0 0 0"};
     align-self: ${props=>props.alignSelf || "auto"};
 `
-
 
 export {FlexDiv, FlexChild}
