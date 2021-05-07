@@ -47,8 +47,8 @@ const FrontPage = ()=>{
                     <FlexDiv onClick={()=>{changeRoute('contact')}} direction="column" alignItem="center"><span><ContactIcon/></span><span>Contact</span></FlexDiv> 
                 </FlexDiv>
             </FlexDiv>
-            <FlexDiv className="content-body"  flexWrap="wrap" Height="100%" overflowY="scroll" flexGrow="1"  borderRadius="3em">
-                <FlexDiv className="main-body"  padding="2em" Height="100%"  Width="70%" minWidth="375px" >
+            <FlexDiv className="content-body"  flexWrap="wrap" Height="100%"  flexGrow="1"  borderRadius="3em">
+                <FlexDiv className="main-body"  padding="2em" Height="100%"  Width="70%" minWidth="375px" overflowY="scroll">
                     {renderPage()}
                 </FlexDiv>
                 <FlexDiv className="side-bar"  Width="30%" Height="100%" minWidth="208px" padding="2em">right bar</FlexDiv>

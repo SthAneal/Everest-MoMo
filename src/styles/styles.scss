@@ -5,6 +5,10 @@ $Cultured:#eff3ff;
 $Sidebar_White:#f6f7fb;
 $Space_cadet:#29335C;
 
+@mixin borderRadius($t-value, $r-value, $b-value, $l-value){
+    border-radius: $t-value $r-value $b-value $l-value;
+}
+
 .transition{
     transition: all 0.2s linear;
 }
@@ -12,7 +16,7 @@ $Space_cadet:#29335C;
 *:not(.slider){
     @extend .transition;
 }
-.shadow::before{
+/* .shadow::before{
     content: '';
     position: absolute;
     top: 0px;
@@ -25,7 +29,13 @@ $Space_cadet:#29335C;
     z-index: 3;
     border-radius: 1em 0;
     box-shadow: 0px 3px 5px -1px #000;
+} */
+
+.shadow{
+    box-shadow: 0px 6px 16px -1px #00000085;
 }
+
+
 .cursor-pointer{
     cursor: pointer;
 }
@@ -130,7 +140,7 @@ $Space_cadet:#29335C;
 
 // slider
 #sliderA{
-    box-shadow: 0px 2px 8px 0px #514c4e;
+    box-shadow: 0px 6px 16px -1px #00000085;
     border-radius: 1em;
 }
 
@@ -169,5 +179,36 @@ $Space_cadet:#29335C;
     fill: #ffffffd6;
     &:hover{
         fill:#ffffff;
+    }
+}
+
+.card{
+    padding: 3em 0.7em !important;
+    &>div{
+        @extend .shadow;
+        height: 100%;
+        color: $Black_Coffee;
+        background: $Cultured;
+        position: relative;
+        border-radius: 1em !important;
+        padding:5em 1em 2em !important;
+        text-align: center;
+        margin: 1em 0.2em !important;
+        &>img{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #b8b8b8;
+            border-radius: 100%;
+            position: absolute;
+            left: calc(50% - 50px);
+            top: -50px;
+            @extend .shadow;
+        }
+        &>div.price{
+            font-size: 1.2em;
+            margin-bottom: 1em;
+            color: $Ruby_Red;
+            text-shadow: 0px 1px 1px $Space_cadet;
+        }
     }
 }

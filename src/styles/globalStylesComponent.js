@@ -36,5 +36,14 @@ const FlexChild = styled.div`
     padding:${props=>props.padding || "0 0 0 0"};
     align-self: ${props=>props.alignSelf || "auto"};
 `
+const Title = styled.h2`
+    width:${props=>props.Width || "100%"};
+    font-size:${props=>props.fontSize || "1.5em"};
+    font-weight:${props=>props.fontWeight || "bold"};
+    text-align:${props=>props.textAlign || "center"};
+    padding:${props=>props.padding || "0"};
+    margin:${props=>props.margin || "0"};
+    color:${props=>props.color || Space_cadet};
+`
 
-export {FlexDiv, FlexChild}
+export {FlexDiv, FlexChild, Title}

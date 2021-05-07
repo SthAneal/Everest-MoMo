@@ -7,6 +7,7 @@ const postReducer = (state, action)=>{
             return {...state, route:action.payload}
         case 'UPDATE_POST':
             return Object.assign({...state}, {[action.payload.aliasName]:action.payload})
+        
         default:
             return state;
     };
@@ -19,6 +20,30 @@ const getPostByAliasName = (dispatch)=>{
     }
 }
 
+const getChildrensByParentAliasName = (dispatch)=>{
+    return async (aliasName)=>{
+        let parentData = await Axios.get(`/posts/?aliasName=${aliasName}`);
+        parentData.data[0].childrens=[];
+
+        let childData = await Axios.get(`/posts/?parentId=${parentData.data[0]._id}`);
+        childData.data.forEach((child)=>{
+            parentData.data[0].childrens.push(
+                /* {
+                    [child.aliasName]:child
+                } */
+                child
+            )
+        })
+
+        //let wholeData = Object.assign(...parentData, parentData['childrens'])
+        dispatch({type:'UPDATE_POST', payload:parentData.data[0]});
+
+        
+
+
+    }
+}
+
 const changeRoute = (dispatch)=>{
     return (route)=>{
         dispatch({type:'CHANGE_ROUTE',payload:route})
@@ -27,4 +52,4 @@ const changeRoute = (dispatch)=>{
 
 
 
-export const {Context, Provider} = CreateDataContext(postReducer, {changeRoute, getPostByAliasName},{route:'home'});
+export const {Context, Provider} = CreateDataContext(postReducer, {changeRoute, getPostByAliasName, getChildrensByParentAliasName},{route:'home'});

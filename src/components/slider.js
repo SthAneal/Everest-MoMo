@@ -142,7 +142,7 @@ export default class Slider extends React.Component{
         const images = this.props.data.gallery.map((item)=>{
             return(
                 <div className="slider__item" key={item.altTxt} style={{width:`${this.state.sliderWrapperWidth}px`}}>
-                    <img src={`data:image/jpeg;base64,${item.image}`}/>
+                    <img src={`data:image/jpeg;base64,${item.image}`} alt={item.altTxt}/>
                 </div>
             )
         }); 
