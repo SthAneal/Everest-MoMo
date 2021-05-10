@@ -7,6 +7,8 @@ const postReducer = (state, action)=>{
             return {...state, route:action.payload}
         case 'UPDATE_POST':
             return Object.assign({...state}, {[action.payload.aliasName]:action.payload})
+        case 'UPDATE_MENU':
+            return Object.assign({...state}, {menu:action.payload})
         
         default:
             return state;
@@ -34,13 +36,17 @@ const getChildrensByParentAliasName = (dispatch)=>{
                 child
             )
         })
-
         //let wholeData = Object.assign(...parentData, parentData['childrens'])
         dispatch({type:'UPDATE_POST', payload:parentData.data[0]});
+    }
+}
 
-        
-
-
+// to get all the menus items
+const getMenu = (dispatch)=>{
+    return async ()=>{
+        const response = await Axios.get(`/menu/`);
+        console.log(response.data);
+        dispatch({type:'UPDATE_MENU', payload:response.data});
     }
 }
 
@@ -52,4 +58,4 @@ const changeRoute = (dispatch)=>{
 
 
 
-export const {Context, Provider} = CreateDataContext(postReducer, {changeRoute, getPostByAliasName, getChildrensByParentAliasName},{route:'home'});
+export const {Context, Provider} = CreateDataContext(postReducer, {changeRoute, getPostByAliasName, getChildrensByParentAliasName, getMenu},{route:'home'});

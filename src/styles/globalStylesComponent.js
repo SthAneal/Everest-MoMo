@@ -16,8 +16,8 @@ const FlexDiv = styled.div`
     flex-grow: ${props=>props.flexGrow || 'inherit'};
     height:${props=>props.Height || "auto"};
     width: ${props=>props.Width || "auto"};
-    min-height:${props=>props.minHeight || "inherit"};
-    min-width: ${props=>props.minWidth || "inherit"};
+    min-height:${props=>props.minHeight || "auto"};
+    min-width: ${props=>props.minWidth || "auto"};
     max-height:${props=>props.maxHeight || "inherit"};
     max-width: ${props=>props.maxWidth || "inherit"};
     justify-content: ${props=>props.justifyContent || "flex-start"};
@@ -38,12 +38,14 @@ const FlexChild = styled.div`
 `
 const Title = styled.h2`
     width:${props=>props.Width || "100%"};
+    height:${props=>props.Height || "auto"};
     font-size:${props=>props.fontSize || "1.5em"};
     font-weight:${props=>props.fontWeight || "bold"};
     text-align:${props=>props.textAlign || "center"};
     padding:${props=>props.padding || "0"};
     margin:${props=>props.margin || "0"};
     color:${props=>props.color || Space_cadet};
+    text-transform:${props=>props.textTransform || "initial"}
 `
 
 export {FlexDiv, FlexChild, Title}

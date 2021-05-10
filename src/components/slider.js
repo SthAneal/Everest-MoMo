@@ -33,7 +33,10 @@ export default class Slider extends React.Component{
     // resize the slider elements just after the components mounts
     componentDidMount(){
         this.targetSliderElem =  document.querySelector(`${this.parentWrapper} .slider`);
-        this.handleResize();
+        this.setTimeOutId = setTimeout(()=>{
+            this.setTimeOutId = this.handleResize();
+            clearTimeout(this.setTimeOutId)
+        },3000);
     }
 
     // add resize event handler and initiate the slider animation, after the component gets updated.
