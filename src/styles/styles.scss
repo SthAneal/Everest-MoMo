@@ -33,9 +33,16 @@ $Dim_Text:#514c4eb3;
 } */
 
 .shadow{
-    box-shadow: 0px 5px 11px -2px #00000085;
+    box-shadow: 0px 0px 11px -1px #00000059;
 }
 
+.gradiant-bg{
+    background: rgb(239,243,255);
+    background: -moz-linear-gradient(250deg, rgba(239,243,255,1) 0%, rgba(239,243,255,0.819765406162465) 82%);
+    background: -webkit-linear-gradient(250deg, rgba(239,243,255,1) 0%, rgba(239,243,255,0.819765406162465) 82%);
+    background: linear-gradient(250deg, rgba(239,243,255,1) 0%, rgba(239,243,255,0.819765406162465) 82%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eff3ff",endColorstr="#eff3ff",GradientType=1);
+}
 
 .cursor-pointer{
     cursor: pointer;
@@ -49,6 +56,9 @@ $Dim_Text:#514c4eb3;
 
 .nav-bar{
     background-color: $Cultured;
+    &>div>*{
+        pointer-events:none;
+    }
     &>div:first-child{
         padding: 0.8em;
         margin: 0 0 4em;
@@ -69,12 +79,12 @@ $Dim_Text:#514c4eb3;
             font-weight: 100;
             
             &:first-child{
-                min-width: 30px;
-                min-height: 30px;
+                min-width: 50px;
+                min-height: 50px;
                 width: 15%;
                 height: 15%;
-                max-width: 80px;
-                max-height: 80px;
+                max-width: 85px;
+                max-height: 85px;
                 margin-bottom: 1em;
                 &>*{
                     width: 100%;
@@ -93,7 +103,7 @@ $Dim_Text:#514c4eb3;
                 font-weight: 600 !important;
                 &:first-child{
                     border-radius: 50%;
-                    padding: 0.5em;
+                    padding: 1em;
                     background-color: $Black_Coffee;
                     box-shadow: 0px 0px 4px 1px #575757a8;
                     /* border: 2px solid #FFF; */
@@ -111,7 +121,7 @@ $Dim_Text:#514c4eb3;
                 font-weight: 600 !important;
                 &:first-child{
                     border-radius: 50%;
-                    padding: 0.5em;
+                    padding: 1em;
                     background-color: $Black_Coffee;
                     box-shadow: 0px 0px 4px 1px #575757a8;
                     /* border: 2px solid #FFF; */
@@ -123,8 +133,6 @@ $Dim_Text:#514c4eb3;
             }
         }
     }
-
-    
 }
 
 .content-body{
@@ -184,12 +192,13 @@ $Dim_Text:#514c4eb3;
 }
 
 .card{
-    padding: 3.5em 0.7em !important;
+    padding: 3.5em 0.7em 0 !important;
     &>div{
         @extend .shadow;
         height: 100%;
+        width: 100%;
         color: $Dim_Text;
-        background: $Cultured;
+        @extend .gradiant-bg;
         position: relative;
         border-radius: 1em !important;
         padding:6em 1em 2em !important;
@@ -198,6 +207,7 @@ $Dim_Text:#514c4eb3;
         &>img{
             width: 100px;
             height: 100px;
+            border:0.5em solid #eff3ff;
             border-radius: 100%;
             position: absolute;
             left: calc(50% - 50px);
@@ -213,21 +223,38 @@ $Dim_Text:#514c4eb3;
         }&>div.description{
             font-size: 1em;
         }
+        &:hover{
+            box-shadow: 0px 0px 14px -1px #00000085;
+            background: $White;
+            &>img{
+                border-color: $White;
+                box-shadow: 0px 5px 11px 1px #00000085;
+            }
+        }
     }
 }
+
 .menu{
-    padding: 1em !important;
+    padding: 1em 0.7em 0.5em !important;
     &>div{
         @extend .cursor-pointer;
         @extend .shadow;
         height: 100%;
+        width: 100%;
         color: $Dim_Text;
-        background: $Cultured;
+        @extend .gradiant-bg;
         border-radius: 1em !important;
         text-align: center;
         overflow: hidden;
         &:hover{
-            box-shadow: 0px 5px 11px 1px #00000085;
+            box-shadow: 0px 0px 14px -1px #00000085;
+            background: $White;
+        }
+        &>h2{
+            height: 95px;
+            text-align: center;
+            opacity: 0.9;
+            box-shadow: 0px 2px 16px 12px #00000066;
         }
         &>img{
             width: 100%;
@@ -238,5 +265,101 @@ $Dim_Text:#514c4eb3;
             background: $Space_cadet;
             filter: opacity(0.4);
         }
+    }
+}
+
+.testimonial{
+    @extend .shadow;
+    height: 100%;
+    width: 100%;
+    color: $Dim_Text;
+    border-radius: 1em !important;
+    margin: 0.7em !important;
+    @extend .gradiant-bg;
+    &__image{
+        &>img{
+            width: 80px;
+            height: 80px;
+            border-radius: 100%;
+            filter:drop-shadow(2px 4px 6px #00000059);
+            object-fit: cover;
+        }
+    }
+    &__comment{
+        background: $White;
+        &>div.description{
+            font-size: 1em;
+        }
+    }   
+}
+
+.contact{
+    @extend .shadow;
+    color: $Cultured;
+    border-radius: 1em !important;
+    text-align: center;
+    @extend .gradiant-bg;
+
+    &>div{
+        color: $Black_Coffee;
+        margin-bottom: 0.7em;
+    }
+    .address{
+        margin-top: 2em;
+    }
+    .opening{
+        color: $Black_Coffee;
+        &>span{
+            font-weight: 600;
+        }
+    }
+    .status{
+        text-transform: uppercase;
+        font-size: 1.3em;
+        font-weight: 600;
+        color: $Ruby_Red;
+    }
+    .note{
+        color: $Ruby_Red;
+        font-weight: 600;
+        text-align: center;
+        font-style: italic;
+        margin-bottom: 1.5em;
+        font-size: 1.3em;
+    }
+}
+
+.map{
+    @extend .shadow;
+    border-radius: 1em !important;
+    @extend .gradiant-bg;
+}
+
+.social{
+    & a{
+        &>img{
+            width: 35px;
+            height: 35px;
+            @extend .shadow;
+        }
+        &:hover{
+            &>img{
+                box-shadow: 0px 0px 14px -1px #00000085;
+            }
+        }
+    }   
+}
+
+.developed-by{
+    &>*{
+        display: inline-block;
+    }
+    & span{
+        margin-right: 0.5em;
+        color: $Dim_Text;
+    }
+    & a{
+        color: $Ruby_Red;
+        text-decoration: none;
     }
 }

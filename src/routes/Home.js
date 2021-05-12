@@ -1,6 +1,7 @@
 import React, {useContext, useEffect} from 'react';
 import {Context as PostContext} from  '../context/PostContext';
 import {FlexDiv, Title} from '../styles/globalStylesComponent';
+
 import Slider from '../components/Slider';
 import Card from '../components/Card';
 import Menu from '../components/Menu';
@@ -9,6 +10,7 @@ const Home = ()=>{
     const {state, changeRoute, getPostByAliasName, getChildrensByParentAliasName, getMenu} = useContext(PostContext);
     let cards= null;
     let menus = null;
+
     useEffect(()=>{
         if(!state.slider)
             getPostByAliasName('slider');
@@ -18,7 +20,6 @@ const Home = ()=>{
         
         if(!state.menu)
             getMenu();
-
     },[]);
 
     if(state.todaysspecials){
@@ -42,7 +43,7 @@ const Home = ()=>{
                     onClick={()=>changeRoute('menu')}
                     key={item.aliasName}
                     data={item}
-                    Width="50%" 
+                    Width={`${100/3}%`}
                     Height="350px"
                     OddOrEven={state.menu.indexOf(item)}
                 />
@@ -55,14 +56,14 @@ const Home = ()=>{
             <FlexDiv Width="100%" minHeight="300px" flexWrap="nowrap" borderRadius="4px" position="relative" id="sliderA">
                 {state.slider?<Slider parentWrapper="#sliderA" data={state.slider}/> : <FlexDiv className="font-size-loading" alignItem="center" justifyContent="center" minHeight="300px">Loading...</FlexDiv>}
             </FlexDiv>
-            <FlexDiv direction="column" Width="100%" margin="5em 0 0" overflowX="visible" overflowY="visible">
+            <FlexDiv direction="column" Width="100%" margin="5em 0 0" overflowY="visible">
                 <Title fontWeight="500" fontSize="1.7em" textTransform="uppercase" color="#A01D28">Today's Specials</Title>
-                <FlexDiv Width="100%" Height="100%" alignItem="stretch" margin="2em 0" overflowX="visible" overflowY="scroll" flexWrap="wrap" flexGrow="1">
+                <FlexDiv Width="100%" Height="100%" alignItem="stretch" margin="2em 0 5em" overflowY="scroll" flexWrap="wrap" flexGrow="1">
                     {cards}
                 </FlexDiv>
 
                 <Title fontWeight="500" fontSize="1.7em" textTransform="uppercase"  color="#A01D28">Our Menu</Title>
-                <FlexDiv Width="100%" Height="100%" alignItem="stretch" margin="2em 0" overflowX="visible" overflowY="scroll" flexWrap="wrap" flexGrow="1">
+                <FlexDiv Width="100%" Height="100%" alignItem="stretch" margin="2em 0" overflowY="scroll" flexWrap="wrap" flexGrow="1">
                     {menus}
                 </FlexDiv>
 

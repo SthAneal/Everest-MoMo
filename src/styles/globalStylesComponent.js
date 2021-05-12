@@ -45,7 +45,8 @@ const Title = styled.h2`
     padding:${props=>props.padding || "0"};
     margin:${props=>props.margin || "0"};
     color:${props=>props.color || Space_cadet};
-    text-transform:${props=>props.textTransform || "initial"}
+    text-transform:${props=>props.textTransform || "initial"};
+    line-height:${props=>props.lineHeight || "1.2em"};
 `
 
 export {FlexDiv, FlexChild, Title}

@@ -9,7 +9,10 @@ const postReducer = (state, action)=>{
             return Object.assign({...state}, {[action.payload.aliasName]:action.payload})
         case 'UPDATE_MENU':
             return Object.assign({...state}, {menu:action.payload})
-        
+        case 'UPDATE_TESTIMONIALS':
+            return Object.assign({...state}, {testimonials:action.payload})
+        case 'UPDATE_CONTACT':
+            return Object.assign({...state}, {contact:action.payload})
         default:
             return state;
     };
@@ -45,7 +48,6 @@ const getChildrensByParentAliasName = (dispatch)=>{
 const getMenu = (dispatch)=>{
     return async ()=>{
         const response = await Axios.get(`/menu/`);
-        console.log(response.data);
         dispatch({type:'UPDATE_MENU', payload:response.data});
     }
 }
@@ -56,6 +58,20 @@ const changeRoute = (dispatch)=>{
     }
 }
 
+// to get all the testimonials
+const getTestimonials = (dispatch)=>{
+    return async (limit)=>{
+        const response = await Axios.get(`/testimonials?_page=1&_limit=${limit}&_sort=date&_order=desc`);
+        dispatch({type:'UPDATE_TESTIMONIALS', payload:response.data});
+    }
+}
 
+// to get all the contact information
+const getContact = (dispatch)=>{
+    return async ()=>{
+        const response = await Axios.get(`/contact`);
+        dispatch({type:'UPDATE_CONTACT', payload:response.data});
+    }
+}
 
-export const {Context, Provider} = CreateDataContext(postReducer, {changeRoute, getPostByAliasName, getChildrensByParentAliasName, getMenu},{route:'home'});
+export const {Context, Provider} = CreateDataContext(postReducer, {changeRoute, getPostByAliasName, getChildrensByParentAliasName, getMenu, getTestimonials, getContact},{route:'home'});
