@@ -1,10 +1,20 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 const Black_Coffee = '#322C2C';
 const Ruby_Red =  '#A01D28';
 const White = '#FFFFFF';
 const Cultured = '#F7F7F7';
 const Space_cadet = '#29335C';
+
+
+const medias = ["mediaA","mediaB","mediaC"];
+
+const complexMixin = css`
+    @media screen and (${(props,elem)=>`${props[elem].screenWidthProp}:${props[elem].value}`}){
+        ${(props,elem)=>props[elem].property}
+    }
+`
+var newStyle;
 
 const FlexDiv = styled.div`
     position: ${props=>props.position || "inherit"};
@@ -27,6 +37,24 @@ const FlexDiv = styled.div`
     border-radius:${props=>props.borderRadius || "0 0 0 0 "};
     overflow-x:${props=>props.overflowX || "hidden"};
     overflow-y:${props=>props.overflowY || "hidden"};
+    
+
+    ${props=> {
+        newStyle ='';
+        medias.forEach((elem)=>{
+                    if(props[elem]){
+                        const attribute = props[elem].screenWidthProp;
+                        const property = props[elem].property;
+                        newStyle += "@media screen and ("+attribute+"){"+
+                                property+
+                            "};"
+                    }
+                 });
+                 newStyle = css`${newStyle}`;
+            }
+     }
+    
+     ${()=>newStyle}
 
 `
 const FlexChild = styled.div`

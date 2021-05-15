@@ -1,7 +1,6 @@
 import React from 'react';
 import {FlexDiv, Title} from '../styles/globalStylesComponent';
 
-
 const Maps = ({data})=>{
     return(
         <FlexDiv className="map" Width="100%" direction="column" margin="0.7em 0.7em 5em" alignItem="center">

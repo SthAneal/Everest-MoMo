@@ -2,7 +2,6 @@ import React from 'react';
 import {FlexDiv, Title} from '../styles/globalStylesComponent';
 import imagePlaceholder from '../assets/man.png';
 
-
 const Testimonials = ({data, Width, OddOrEven})=>{
     return(
         <FlexDiv className="testimonial" minWidth="120px"  Width={Width} flexWrap="wrap" flexGrow="1" alignItem="center">

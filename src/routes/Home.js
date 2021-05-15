@@ -57,12 +57,12 @@ const Home = ()=>{
                 {state.slider?<Slider parentWrapper="#sliderA" data={state.slider}/> : <FlexDiv className="font-size-loading" alignItem="center" justifyContent="center" minHeight="300px">Loading...</FlexDiv>}
             </FlexDiv>
             <FlexDiv direction="column" Width="100%" margin="5em 0 0" overflowY="visible">
-                <Title fontWeight="500" fontSize="1.7em" textTransform="uppercase" color="#A01D28">Today's Specials</Title>
+                <Title fontWeight="400" fontSize="1.7em" textTransform="uppercase" color="#A01D28">Today's Specials</Title>
                 <FlexDiv Width="100%" Height="100%" alignItem="stretch" margin="2em 0 5em" overflowY="scroll" flexWrap="wrap" flexGrow="1">
                     {cards}
                 </FlexDiv>
 
-                <Title fontWeight="500" fontSize="1.7em" textTransform="uppercase"  color="#A01D28">Our Menu</Title>
+                <Title fontWeight="400" fontSize="1.7em" textTransform="uppercase"  color="#A01D28">Our Menu</Title>
                 <FlexDiv Width="100%" Height="100%" alignItem="stretch" margin="2em 0" overflowY="scroll" flexWrap="wrap" flexGrow="1">
                     {menus}
                 </FlexDiv>

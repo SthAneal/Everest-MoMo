@@ -1,13 +1,12 @@
 import React from 'react';
 import {FlexDiv, Title} from '../styles/globalStylesComponent';
 
-
 const ContactUs = ({data})=>{
     const currentTime = new Date().getHours(); 
     
     return(
         <FlexDiv className="contact" Width="100%" direction="column" padding="2em" margin="0.7em" alignItem="center">
-            <Title fontWeight="500" margin="0 0 1.5em" fontSize="2em" >{data.company}</Title>
+            <Title fontWeight="500" margin="1.5em 0 1em" fontSize="2em" >{data.company}</Title>
             {data.note?<div className="note">{data.note}</div>:null}
             
             <div className="status">
