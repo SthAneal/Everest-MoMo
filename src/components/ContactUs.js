@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react';
 import {FlexDiv, Title} from '../styles/globalStylesComponent';
 
 const ContactUs = ({data})=>{

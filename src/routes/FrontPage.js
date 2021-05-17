@@ -23,8 +23,6 @@ const FrontPage = ()=>{
     const {state, changeRoute} = useContext(PostContext);
     const route = state.route;
 
-    let testimonials= null;
-
     const renderPage = ()=>{
         switch(route){
             case 'home':
@@ -50,7 +48,6 @@ const FrontPage = ()=>{
                 element.classList.remove("selected");
             }
         });
-        
         changeRoute(routeName);
     }
     
@@ -74,7 +71,7 @@ const FrontPage = ()=>{
 
                 >
                 <FlexDiv direction="row" Width="100%" Height="100%" padding="1em 0 0 0" className="nav-bar" justifyContent="center" alignItem="center" flexWrap="wrap" flexGrow="1">
-                    <FlexDiv onClick={handleRoute} name="home" justifyContent="center" margin="0 0 2em" className="cursor-pointer"
+                    <FlexDiv onClick={handleRoute} name="home" justifyContent="center" margin="0 0 2em" className="logo cursor-pointer"
                         mediaA={
                             {
                                 screenWidthProp:"min-width:1440px",
@@ -82,7 +79,7 @@ const FrontPage = ()=>{
                             }
                         }
                     >
-                        <img src={logo}/>
+                        <img src={logo} alt="The Everest MoMo logo"/>
                     </FlexDiv> 
                     <FlexDiv className="nav-item-wrapper" flexWrap="wrap" flexGrow="1" justifyContent="center" Width="100%"
                         mediaA={
@@ -92,11 +89,11 @@ const FrontPage = ()=>{
                             }
                         }
                     >
-                        <FlexDiv onClick={handleRoute} name="home" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item selected"><span><HomeIcon/></span><span>Home</span></FlexDiv> 
-                        <FlexDiv onClick={handleRoute} name="about" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item"><span><AboutusIcon/></span><span>About us</span></FlexDiv> 
-                        <FlexDiv onClick={handleRoute} name="menu" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item"><span><MenuIcon/></span><span>Menu</span></FlexDiv> 
-                        <FlexDiv onClick={handleRoute} name="menu" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item"><span><TakeawayIcon/></span><span>Take away</span></FlexDiv> 
-                        <FlexDiv onClick={handleRoute} name="contact" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item"><span><ContactIcon/></span><span>Contact</span></FlexDiv> 
+                        <FlexDiv onClick={handleRoute} name="home" title="Home" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item selected"><span><HomeIcon/></span><span>Home</span></FlexDiv> 
+                        <FlexDiv onClick={handleRoute} name="about" title="About" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item"><span><AboutusIcon/></span><span>About us</span></FlexDiv> 
+                        <FlexDiv onClick={handleRoute} name="menu" title="Menu" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item"><span><MenuIcon/></span><span>Menu</span></FlexDiv> 
+                        <FlexDiv onClick={handleRoute} name="menu" title="Menu" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item"><span><TakeawayIcon/></span><span>Take away</span></FlexDiv> 
+                        <FlexDiv onClick={handleRoute} name="contact" title="Contact" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item"><span><ContactIcon/></span><span>Contact</span></FlexDiv> 
                     </FlexDiv>
                 </FlexDiv>
             </FlexDiv>

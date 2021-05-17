@@ -1,0 +1,7 @@
+const ImageHolder =({image})=>{
+    return(
+        <>
+            
+        </>
+    )
+}

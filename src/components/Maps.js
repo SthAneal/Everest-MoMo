@@ -1,5 +1,5 @@
-import React from 'react';
-import {FlexDiv, Title} from '../styles/globalStylesComponent';
+//import React from 'react';
+import {FlexDiv} from '../styles/globalStylesComponent';
 
 const Maps = ({data})=>{
     return(

@@ -6,14 +6,20 @@ const White = '#FFFFFF';
 const Cultured = '#F7F7F7';
 const Space_cadet = '#29335C';
 
-
+// different media query cases. Allows at least 3 media query per element. 
+// Increase the array 'media' for more cases.
 const medias = ["mediaA","mediaB","mediaC"];
 
-const complexMixin = css`
+// to create shadow div
+const ShadowDiv = (props)=><div className={props.className}>
+    {props.children}
+</div>
+
+/* const complexMixin = css`
     @media screen and (${(props,elem)=>`${props[elem].screenWidthProp}:${props[elem].value}`}){
         ${(props,elem)=>props[elem].property}
     }
-`
+` */
 var newStyle;
 
 const FlexDiv = styled.div`
@@ -53,9 +59,7 @@ const FlexDiv = styled.div`
                  newStyle = css`${newStyle}`;
             }
      }
-    
      ${()=>newStyle}
-
 `
 const FlexChild = styled.div`
     flex: ${props=>props.flexCount || "auto"};
@@ -75,6 +79,17 @@ const Title = styled.h2`
     color:${props=>props.color || Space_cadet};
     text-transform:${props=>props.textTransform || "initial"};
     line-height:${props=>props.lineHeight || "1.2em"};
+    word-spacing:0.3em;
 `
 
-export {FlexDiv, FlexChild, Title}
+const ImageHolder = styled(ShadowDiv)`
+     width:${props=>props.Width || "100%"};
+     height:${props=>props.Height || "100%"};
+     background-image:url('${props=>props.image || "" }');
+     background-position: ${props=>props.bgPosition || "center"};
+     background-repeat: ${props=>props.repeat || "no-repeat"};
+     background-size: ${props=>props.bgSize || "cover"};
+     border-radius:${props=>props.borderRadius || "0"};
+`
+
+export {FlexDiv, FlexChild, Title, ImageHolder}

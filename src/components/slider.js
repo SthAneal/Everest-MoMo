@@ -33,10 +33,7 @@ export default class Slider extends React.Component{
     // resize the slider elements just after the components mounts
     componentDidMount(){
         this.targetSliderElem =  document.querySelector(`${this.parentWrapper} .slider`);
-        this.setTimeOutId = setTimeout(()=>{
-            this.setTimeOutId = this.handleResize();
-            clearTimeout(this.setTimeOutId)
-        },3000);
+        this.handleResize();
     }
 
     // add resize event handler and initiate the slider animation, after the component gets updated.
@@ -44,9 +41,15 @@ export default class Slider extends React.Component{
         window.addEventListener('resize', this.handleResize);
         this.setTimeOutId = setTimeout(()=>{
             this.animateRequestId = this.animateSlider(-1, 2000, 4000);
+            clearTimeout(this.setTimeOutId);
         },1000);
     }
-    
+
+    // to remove the event listener after the component will unmount. It prevents the case of calling the 
+    // resize function while resizing the window in other pages.
+    componentWillUnmount(){
+        window.removeEventListener('resize', this.handleResize);
+    }
 
     // handle the resizing of the slider items when changing the viewport or any kind of rotation detection.
     handleResize(){
