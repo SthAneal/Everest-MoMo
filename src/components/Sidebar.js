@@ -22,7 +22,6 @@ const Sidebar = ()=>{
 
 
     if(state.testimonials){
-        console.log(state.testimonials);
         testimonials = state.testimonials.map((testimonial)=>{
             return (
                 <Testimonials 

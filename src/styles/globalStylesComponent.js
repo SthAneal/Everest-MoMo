@@ -20,6 +20,13 @@ const ShadowDiv = (props)=><div className={props.className}>
         ${(props,elem)=>props[elem].property}
     }
 ` */
+
+/* background-image:url('${props=>props.image || "" }');
+     background-position: ${props=>props.bgPosition || "center"};
+     background-repeat: ${props=>props.repeat || "no-repeat"};
+     background-size: ${props=>props.bgSize || "cover"}; 
+*/
+
 var newStyle;
 
 const FlexDiv = styled.div`
@@ -43,7 +50,8 @@ const FlexDiv = styled.div`
     border-radius:${props=>props.borderRadius || "0 0 0 0 "};
     overflow-x:${props=>props.overflowX || "hidden"};
     overflow-y:${props=>props.overflowY || "hidden"};
-    
+    text-align:${props=>props.textAlign || "initial"};
+    align-self:${props=>props.alignSelf || "initial"};
 
     ${props=> {
         newStyle ='';
@@ -78,18 +86,24 @@ const Title = styled.h2`
     margin:${props=>props.margin || "0"};
     color:${props=>props.color || Space_cadet};
     text-transform:${props=>props.textTransform || "initial"};
-    line-height:${props=>props.lineHeight || "1.2em"};
+    line-height:${props=>props.lineHeight || "1.5em"};
+    font-style:${props=>props.fontStyle || "initial"};
     word-spacing:0.3em;
 `
 
 const ImageHolder = styled(ShadowDiv)`
      width:${props=>props.Width || "100%"};
      height:${props=>props.Height || "100%"};
-     background-image:url('${props=>props.image || "" }');
-     background-position: ${props=>props.bgPosition || "center"};
-     background-repeat: ${props=>props.repeat || "no-repeat"};
-     background-size: ${props=>props.bgSize || "cover"};
+     min-height:${props=>props.minHeight || "auto"};
+     min-width: ${props=>props.minWidth || "auto"};
+     max-height:${props=>props.maxHeight || "inherit"};
+     max-width: ${props=>props.maxWidth || "inherit"};
      border-radius:${props=>props.borderRadius || "0"};
+     overflow:hidden;
+     &>img{
+         width:100%;
+         height:100%;
+     }
 `
 
 export {FlexDiv, FlexChild, Title, ImageHolder}

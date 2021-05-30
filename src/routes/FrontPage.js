@@ -97,11 +97,11 @@ const FrontPage = ()=>{
                     </FlexDiv>
                 </FlexDiv>
             </FlexDiv>
-            <FlexDiv className="content-body" Width="85%" Height="100%"  flexWrap="wrap" flexGrow="1"  borderRadius="3em" overflowY="scroll">
-                <FlexDiv className="main-body"  padding="2em" Height="100%"  Width="70%" minWidth="150px" overflowY="scroll">
+            <FlexDiv className="content-body" Width="85%" Height="100%"  flexWrap="wrap" flexGrow="1"  borderRadius="2em" overflowY="scroll">
+                <FlexDiv className="main-body"  padding="0em" Height="100%"  Width="70%" minWidth="150px" overflowY="scroll">
                     {renderPage()}
                 </FlexDiv>
-                <FlexDiv className="side-bar"  Width="30%" Height="100%" minWidth="216px" padding="2em" overflowY="scroll">
+                <FlexDiv className="side-bar"  Width="30%" Height="100%" minWidth="216px" padding="1em" overflowY="scroll">
                     <Sidebar/>
                 </FlexDiv>
             </FlexDiv>

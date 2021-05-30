@@ -1,7 +1,0 @@
-const ImageHolder =({image})=>{
-    return(
-        <>
-            
-        </>
-    )
-}

@@ -11,7 +11,7 @@ const Card = ({data, Width, OddOrEven})=>{
                     src={data.headerImage.image?`data:image/jpeg;base64,${data.headerImage.image}`:`${imagePlaceholder}`} 
                     alt={data.headerImage.altTxt} 
                 />
-                <Title fontWeight="500" margin="0 0 1em" fontSize="1.5em">{data.name}</Title>
+                <Title fontWeight="500" margin="0 0 1em" fontSize="1.5em" lineHeight="1.2em">{data.name}</Title>
                 <div className="price">{data.subContent}</div>
                 <div className="description">{data.content}</div>
             </div>
