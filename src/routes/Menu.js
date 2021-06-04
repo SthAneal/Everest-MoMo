@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext}from 'react';
+import ReactDOM from 'react-dom';
 import {Context as PostContext} from  '../context/PostContext';
 import {FlexDiv, ImageHolder, Title, ModalWrapper} from '../styles/globalStylesComponent';
 import Card from '../components/Card';
@@ -7,10 +8,13 @@ import MenuList from '../components/MenuList';
 import { ReactComponent as SearchIcon} from '../assets/magnifying-glass.svg';
 import { ReactComponent as CloseIcon} from '../assets/close.svg';
 
+import imagePlaceholder from '../assets/chicken.png'
+
+
 
 const Menu = ()=>{
     let menuList = null; // ===> to hold all the menu and sub menu items
-    let menuItems = null; // ===> to provide the search scope for menu search field
+    let menuItems = []; // ===> to provide the search scope for menu search field
     const [itemDetails, setItemDetails] = useState(null); // ===> hold the sub menu items details for tooltip modal
     const {state, getMenu} = useContext(PostContext);
 
@@ -18,6 +22,13 @@ const Menu = ()=>{
         if(!state.menu)
             getMenu();
     },[]);
+
+    // get the menu items available for search function
+    if(state.menu){
+        state.menu.map(({items})=>{
+            menuItems.push(...items);
+        });
+    };
 
     // to show detail of the menu item on hover inside a popup
     const showItemDetail = (e, item)=>{
@@ -46,35 +57,63 @@ const Menu = ()=>{
 
     // to show the search result div while searching
     const showSearchResult = ()=>{
-        menuItems = []; // to reset the menu item at the initial state, usually when the search input is clicked
         Object.assign(document.querySelector('.search-result').style,{display:"flex", top:70+'px', left:0+'px', width:"100%"});
-        state.menu.map(({items})=>{
-            menuItems.push(...items);
-        });
     }
 
     // to hide detail of the search result popup
     const hideSearchResult = ()=>{
         Object.assign(document.querySelector('.search-result').style,{display:"none", top:0, left:0, width:"auto"});
         document.querySelector('.search__input').value = '';
-        //setSearchResult(null);
+        
+        // clear the search result
+        let SearchResultList = '';
+        ReactDOM.render(SearchResultList, document.getElementById('search-result__items'));
     }
     
     // to search the matching items from menu items
     const findMatchingItems = (e)=>{
-        //document.querySelector('.search-result__item').innerHTML = '';
         let searchItem = e.target.value;
-        let searchResultList = '';
+        let SearchResultList = '';
 
+        // get the filtered search result
         let searchResult = menuItems.filter((item)=>{
-            return item.name.toLowerCase().indexOf(searchItem.toLowerCase()) !== -1? item:null;
+            return item.name.toLowerCase().indexOf(searchItem.toLowerCase()) !== -1 && searchItem !==''? item:null;
         });
 
-        searchResult.forEach(element => {
-            searchResultList += `<div class="search-result__items__list">${element.name}</div>`;
-            document.querySelector('.search-result__items').innerHTML = searchResultList;
-        });
-        console.log(searchResult);
+        // check if the search result criterion are valid, if not display appropiate message
+        if(searchResult.length >0){
+            SearchResultList = searchResult.map(element => {
+                return  (
+                    <FlexDiv Width="100%" maxHeight="350px" padding="0 0 2em" direction="row" alignItem="center" key={element._id} className="search-result__items__list" flexWrap="wrap" flexGrow="1">
+                        <FlexDiv Width="100px" maxHeight="100px" margin="0 1em 1em 0" className="search-result__items__image-wrapper" borderRadius="1em">
+                            <img 
+                                src={element.image?`data:image/jpeg;base64,${element.image}`:`${imagePlaceholder}`} 
+                                alt={element.altTxt} 
+                            />
+                        </FlexDiv>
+                        <FlexDiv Width="80%" direction="column">
+                            <FlexDiv Width="100%" direction="row" flexWrap="wrap" flexGrow="1">
+                                <FlexDiv margin="0 1em 1em 0"><Title fontSize="1.5em" textAlign="left" color="#fff">{element.name}</Title></FlexDiv>
+                                <FlexDiv minWidth="100px" margin="0 0 1em 0"><Title textAlign="right" fontSize="1.5" color="#ffffffc7">{element.price}</Title></FlexDiv>
+                            </FlexDiv>
+                            <FlexDiv Width="100%">
+                                <Title fontSize="1em" fontWeight="400" textAlign="left" color="#ffffffc7">{element.subContent}</Title>
+                            </FlexDiv>
+                        </FlexDiv>
+                    </FlexDiv>);
+            });
+        }else if(searchResult.length === 0 && searchItem.length !== 0){
+            SearchResultList =  <FlexDiv Width="100%" Height="100%" justifyContent="center" alignItem="center">
+                                    <Title color="#fff" fontSize="2em">No Result Found !!!</Title>
+                                </FlexDiv>;
+        }else{
+            SearchResultList =  <FlexDiv Width="100%" Height="100%" justifyContent="center" alignItem="center">
+                                    <Title color="#fff" fontSize="2em">Try searching for your favourite.</Title>
+                                </FlexDiv>;
+        }
+
+        // render the search items into the result section
+        ReactDOM.render(SearchResultList, document.getElementById('search-result__items'));
 
     }
 
@@ -97,11 +136,13 @@ const Menu = ()=>{
                 <div className="search__btn">
                     <SearchIcon/>
                 </div>
-                <ModalWrapper className="search-result" Width="100%" Height="400px" top="0" left="0" padding="5em 1em 1em" borderRadius="1em">
+                <ModalWrapper className="search-result" Width="100%" top="0" left="0" padding="5em 1em 5em" borderRadius="1em" backgroundColor="#514c4ef2">
                     <span className="modal-wrapper-close" onClick={()=>hideSearchResult()}><CloseIcon/></span>
-                    <div className="search-result__items">
+                    <FlexDiv Width="100%" Height="350px" overflowY="scroll">
+                        <FlexDiv Width="100%" maxHeight="1000vh" minHeight="100%" direction="column" padding="0 0 2em" className="search-result__items" id="search-result__items">
 
-                    </div>
+                        </FlexDiv>
+                    </FlexDiv>
                 </ModalWrapper>
             </FlexDiv>
             <FlexDiv Width="100%" flexWrap="wrap" flexGrow="1">

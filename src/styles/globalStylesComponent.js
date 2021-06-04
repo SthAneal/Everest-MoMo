@@ -113,6 +113,8 @@ const ModalWrapper = styled.div`
      height:${props=>props.Height || "auto"};
      min-width:${props=>props.minWidth || "auto"};
      min-height:${props=>props.minHeight || "auto"};
+     max-width:${props=>props.maxWidth || "inherit"};
+     max-height:${props=>props.maxHeight || "inherit"};
      padding:${props=>props.padding || "0"};
      top:${props=>props.Top || "auto"};
      bottom:${props=>props.Bottom || "auto"};
@@ -121,6 +123,8 @@ const ModalWrapper = styled.div`
      background-color:${props=>props.backgroundColor || Black_Coffee};
      z-index:1;
      box-shadow: 0px 0px 11px -1px #00000059;
+     overflow-x:${props=>props.overflowX || "hidden"};
+     overflow-y:${props=>props.overflowY || "hidden"};
      display:none;
      &>span{
         cursor:pointer;
