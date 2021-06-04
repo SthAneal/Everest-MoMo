@@ -1,6 +1,6 @@
 import styled, {css} from 'styled-components';
 
-const Black_Coffee = '#322C2C';
+const Black_Coffee = '#514c4e';
 const Ruby_Red =  '#A01D28';
 const White = '#FFFFFF';
 const Cultured = '#F7F7F7';
@@ -30,7 +30,7 @@ const ShadowDiv = (props)=><div className={props.className}>
 var newStyle;
 
 const FlexDiv = styled.div`
-    position: ${props=>props.position || "inherit"};
+    position: ${props=>props.position || "static"};
     inset: ${props=>props.inset || "inherit"};
     flex-direction:${props=>props.direction || "row"};
     display:flex;
@@ -106,4 +106,36 @@ const ImageHolder = styled(ShadowDiv)`
      }
 `
 
-export {FlexDiv, FlexChild, Title, ImageHolder}
+const ModalWrapper = styled.div`
+     border-radius:${props=>props.borderRadius || "0px"};
+     position:absolute;
+     width:${props=>props.Width || "auto"};
+     height:${props=>props.Height || "auto"};
+     min-width:${props=>props.minWidth || "auto"};
+     min-height:${props=>props.minHeight || "auto"};
+     padding:${props=>props.padding || "0"};
+     top:${props=>props.Top || "auto"};
+     bottom:${props=>props.Bottom || "auto"};
+     right:${props=>props.Right || "auto"};
+     left:${props=>props.Left || "0"};
+     background-color:${props=>props.backgroundColor || Black_Coffee};
+     z-index:1;
+     box-shadow: 0px 0px 11px -1px #00000059;
+     display:none;
+     &>span{
+        cursor:pointer;
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        right: 10px;
+        top: 10px;
+        z-index: 2;
+        &>*{
+            fill: #ea3e45;
+            stroke-width: 0.5em;
+            stroke: #9a161b;
+        }
+     }
+`
+
+export {FlexDiv, FlexChild, Title, ImageHolder, ModalWrapper}

@@ -3,9 +3,11 @@ $Ruby_Red: #A01D28;
 $White:#ffffff;
 $WhiteOpac:#ffffffc7;
 $Cultured:#eff3ff;
+$CulturedHovered:#dfe6fb;
 $Sidebar_White:#f6f7fb;
 $Sidebar_WhiteOpac:#f6f7fba3;
 $Space_cadet:#29335C;
+//$Space_cadet:#5766a2;
 $Dim_Text:#514c4eb3;
 
 @mixin borderRadius($t-value, $r-value, $b-value, $l-value){
@@ -381,8 +383,11 @@ $Dim_Text:#514c4eb3;
 }
 
 .search{
-    box-shadow: 0px 0px 14px -1px #00000085;
-    
+    background: $White;
+    @extend .shadow;
+    &:hover{
+        box-shadow: 0px 0px 14px -1px #00000085;
+    }
     &__input{
         width:90%;
         height: 50px;
@@ -390,7 +395,7 @@ $Dim_Text:#514c4eb3;
         border:none;
         border-radius: 1em 0 0 1em;
         color: $Black_Coffee;
-        font-size: 1.5em;
+        font-size: 1.3em;
         &:focus,&:active{
             outline:none;
         }
@@ -415,6 +420,65 @@ $Dim_Text:#514c4eb3;
                 height: 100%;
             }
         }
+    }
+    &-result__items__list{
+        color: $White;
+        width: 100% !important;
+    }
+}
+
+.menu-list-wrapper{
+    @extend .shadow;
+    border-radius: 1em !important;
+}
+.menu-list{
+    display: block;
+    width: 100%;
+    &__item{
+        &:nth-child(odd){
+            background: $Cultured;
+        }
+        @extend .cursor-pointer;
+        padding:1em;
+        list-style: none;
+        font-size: 1.2em;
+        &>*{
+            pointer-events: none;
+        }
+        &:hover{
+            background: $CulturedHovered;
+        }
+        &__name{
+            display: inline-block;
+            width:80%;
+            text-transform: capitalize;
+            text-align: left;
+        }
+        &__price{
+            display: inline-block;
+            width: 20%;
+            text-align: right;
+            color: $Ruby_Red;
+            font-weight: 600;
+        }
+    }
+}
+
+.item-details{
+    &>.card>div{
+        background: $White;
+    }
+    &::after{
+        position: absolute;
+        content: '';
+        width: 0;
+        height: 0;
+        bottom: -30px;
+        left: calc(50% - 20px);
+        z-index: 333333;
+        border: 20px solid transparent;
+        border-top-color: $Black_Coffee;
+        pointer-events: none;
     }
 }
 
