@@ -1,13 +1,14 @@
 import React, {useState, useEffect, useContext}from 'react';
 import ReactDOM from 'react-dom';
 import {Context as PostContext} from  '../context/PostContext';
+
 import {FlexDiv, ImageHolder, Title, ModalWrapper} from '../styles/globalStylesComponent';
 import Card from '../components/Card';
-
+import Loading from '../components/Loading';
 import MenuList from '../components/MenuList';
+
 import { ReactComponent as SearchIcon} from '../assets/magnifying-glass.svg';
 import { ReactComponent as CloseIcon} from '../assets/close.svg';
-
 import imagePlaceholder from '../assets/chicken.png'
 
 
@@ -125,30 +126,38 @@ const Menu = ()=>{
     }
 
     return(
-        <FlexDiv direction="column" padding="1.5em 1em 0" position="relative">
-            <ModalWrapper className="item-details"  minHeight="300px" borderRadius="1em" padding="0">
-                <span className="modal-wrapper-close" onClick={()=>hideItemDetail()}><CloseIcon/></span>
-                {itemDetails && <Card data={itemDetails} Width="100%" Height="100%"/>}
-            </ModalWrapper>
-            <Title Width="100%" fontWeight="600" fontSize="1.7em" textTransform="uppercase" color="#29335C">Our Menu</Title>
-            <FlexDiv Width="80%" alignSelf="center" margin="5em 0" padding="0.5em 1em" borderRadius="1em" className="search" justifyContent="space-between" overflowY="visible" overflowX="visible" position="relative">
-                <input className="search__input" type="text" placeholder="Search your favourite food..."  onChange={(e)=>findMatchingItems(e)} onClick={()=>showSearchResult()}/>
-                <div className="search__btn">
-                    <SearchIcon/>
-                </div>
-                <ModalWrapper className="search-result" Width="100%" top="0" left="0" padding="5em 1em 5em" borderRadius="1em" backgroundColor="#514c4ef2">
-                    <span className="modal-wrapper-close" onClick={()=>hideSearchResult()}><CloseIcon/></span>
-                    <FlexDiv Width="100%" Height="350px" overflowY="scroll">
-                        <FlexDiv Width="100%" maxHeight="1000vh" minHeight="100%" direction="column" padding="0 0 2em" className="search-result__items" id="search-result__items">
+        (()=>{
+            if(state.menu){
+                return(
+                    <FlexDiv direction="column" padding="1.5em 1em 0" position="relative">
+                        <ModalWrapper className="item-details"  minHeight="300px" borderRadius="1em" padding="0" overflowY="visible" overflowX="visible">
+                            <span className="modal-wrapper-close" onClick={()=>hideItemDetail()}><CloseIcon/></span>
+                            {itemDetails && <Card data={itemDetails} Width="100%" Height="100%"/>}
+                        </ModalWrapper>
+                        <Title Width="100%" fontWeight="600" fontSize="1.7em" textTransform="uppercase" color="#29335C">Our Menu</Title>
+                        <FlexDiv Width="80%" alignSelf="center" margin="5em 0" padding="0.5em 1em" borderRadius="1em" className="search" justifyContent="space-between" overflowY="visible" overflowX="visible" position="relative">
+                            <input className="search__input" type="text" placeholder="Search your favourite food..."  onChange={(e)=>findMatchingItems(e)} onClick={()=>showSearchResult()}/>
+                            <div className="search__btn">
+                                <SearchIcon/>
+                            </div>
+                            <ModalWrapper className="search-result" Width="100%" top="0" left="0" padding="5em 1em 5em" borderRadius="1em" backgroundColor="#514c4ef2">
+                                <span className="modal-wrapper-close" onClick={()=>hideSearchResult()}><CloseIcon/></span>
+                                <FlexDiv Width="100%" Height="350px" overflowY="scroll">
+                                    <FlexDiv Width="100%" maxHeight="1000vh" minHeight="100%" direction="column" padding="0 0 2em" className="search-result__items" id="search-result__items">
 
+                                    </FlexDiv>
+                                </FlexDiv>
+                            </ModalWrapper>
+                        </FlexDiv>
+                        <FlexDiv Width="100%" flexWrap="wrap" flexGrow="1">
+                            {menuList}
                         </FlexDiv>
                     </FlexDiv>
-                </ModalWrapper>
-            </FlexDiv>
-            <FlexDiv Width="100%" flexWrap="wrap" flexGrow="1">
-                {menuList}
-            </FlexDiv>
-        </FlexDiv>
+                )
+            }else{
+                return <Loading minHeight="100%"/>
+            }
+        })()
     )
 }
 

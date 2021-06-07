@@ -371,7 +371,7 @@ $Dim_Text:#514c4eb3;
         background: $White;
     }
     &__header{
-        box-shadow: 0px 2px 16px 12px #00000066;
+        box-shadow: 0px 2px 16px -4px #00000066;
         opacity: 0.9;
     }
     &__image{
@@ -486,6 +486,52 @@ $Dim_Text:#514c4eb3;
         border: 20px solid transparent;
         border-top-color: $Black_Coffee;
         pointer-events: none;
+    }
+}
+
+.contact-form{
+    &__label-input{
+        font-size: 1.5em;
+        &>label{
+            position: absolute;
+            bottom:57px;
+            color: $Space_cadet;
+        }
+        &>input, &>textarea{
+            width: 100%;
+            height: 50px;
+            border-width: 1px;
+            border-color: transparent;
+            border-bottom-color: #514c4e40;
+            background: transparent;
+            &:focus,&:active{
+                outline:none;
+            }
+        }
+        &:hover{
+            &>label{
+                bottom:95px;
+            }
+        }
+        &>label.stick{
+            bottom:95px !important;
+        }
+    }
+    & .submitBtn{
+        border: none;
+        padding:1.2em 1em 1em 1em;
+        border-radius: 0.5em;
+        font-size: 1.3em;
+        color: $Ruby_Red;
+        text-transform: uppercase;
+        font-weight: 600;
+        @extend .gradiant-bg;
+        @extend .cursor-pointer;
+        @extend .shadow;
+        &:hover{
+            background: $White;
+            box-shadow: 0px 0px 14px -1px #00000085;
+        }
     }
 }
 

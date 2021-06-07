@@ -6,7 +6,7 @@ import Loading from '../components/Loading';
 import Amenities from '../components/Amenities';
 
 const About = ()=>{
-    const {state, getPostByAliasName, getChildrensByParentAliasName} = useContext(PostContext);
+    const {state, getChildrensByParentAliasName} = useContext(PostContext);
 
     let amenities = null;
 
@@ -73,8 +73,6 @@ const About = ()=>{
                 return <Loading minHeight="100%"/>
             }
         })()
-        
-        
     )
 }
 
