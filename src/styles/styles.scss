@@ -7,6 +7,7 @@ $CulturedHovered:#dfe6fb;
 $Sidebar_White:#f6f7fb;
 $Sidebar_WhiteOpac:#f6f7fba3;
 $Space_cadet:#29335C;
+$Success:#11ca0f;
 //$Space_cadet:#5766a2;
 $Dim_Text:#514c4eb3;
 
@@ -508,6 +509,9 @@ $Dim_Text:#514c4eb3;
                 outline:none;
             }
         }
+        &>textarea{
+            padding-top:1em;
+        }
         &:hover{
             &>label{
                 bottom:95px;
@@ -519,19 +523,38 @@ $Dim_Text:#514c4eb3;
     }
     & .submitBtn{
         border: none;
-        padding:1.2em 1em 1em 1em;
+        padding:1.2em 2.5em;
         border-radius: 0.5em;
         font-size: 1.3em;
-        color: $Ruby_Red;
+        font-weight: 400 !important;
         text-transform: uppercase;
         font-weight: 600;
-        @extend .gradiant-bg;
+        background: $Dim_Text;
+        color: $White;
         @extend .cursor-pointer;
         @extend .shadow;
         &:hover{
-            background: $White;
+            color: $White;
+            background-color: $Black_Coffee;
             box-shadow: 0px 0px 14px -1px #00000085;
         }
+    }
+}
+
+.validation{
+    &-failed{
+        border-bottom-color: $Ruby_Red !important;
+    }
+    &-passed{
+        border-bottom-color: #514c4e40 !important;
+    }
+    &-fail{
+        color: $Ruby_Red;
+        font-size: 1.1em;
+    }
+    &-success{
+        color: $Success;
+        font-size: 1.1em;
     }
 }
 
