@@ -45,7 +45,7 @@ const ContactForm = ()=>{
 
     return(
         <FlexDiv Width="100%" direction="column" borderRadius="1em" className="contact-form shadow" padding="3em 1em">
-            {formMessage && <FlexDiv margin="0 0 2.5em 0" className={isValid?"validation-success":"validation-fail"} Width="100%" justifyContent="center">{formMessage}</FlexDiv>}
+            {formMessage && <FlexDiv margin="0 0 2.5em 0" className={isValid?"validation-success":"validation-fail"} Width="100%" textAlign="center" justifyContent="center">{formMessage}</FlexDiv>}
             <FlexDiv Width="100%" direction="column" className="contact-form__label-input" position="relative" padding="2em 1em">
                 <label>Name</label>
                 <input className="validate" type="text" onMouseLeave={(e)=>inputHandle(e)} required/>
