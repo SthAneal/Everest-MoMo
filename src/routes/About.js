@@ -46,7 +46,7 @@ const About = ()=>{
                         <FlexDiv Width="100%" margin="5em 0 0" padding="1em" direction="column">
                             <Title Width="100%" fontWeight="600" fontSize="1.7em" textTransform="uppercase" color="#29335C">About Us</Title>
                             <FlexDiv Width="100%" margin="2em 0 5em" textAlign="Center" direction="column">
-                                <Title Width="100%" fontWeight="500" fontSize="1.2em" fontStyle="italic" margin="0 0 1.5em" >
+                                <Title Width="100%" fontWeight="500" fontSize="1.3em" fontStyle="italic" margin="0 0 1.5em" >
                                     "{state.aboutus.subContent}"
                                 </Title>
                                 <FlexDiv textAlign="center">{state.aboutus.content}</FlexDiv>
