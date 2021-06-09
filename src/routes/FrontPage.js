@@ -92,7 +92,7 @@ const FrontPage = ()=>{
                         <FlexDiv onClick={handleRoute} name="home" title="Home" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item selected"><span><HomeIcon/></span><span>Home</span></FlexDiv> 
                         <FlexDiv onClick={handleRoute} name="about" title="About" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item"><span><AboutusIcon/></span><span>About us</span></FlexDiv> 
                         <FlexDiv onClick={handleRoute} name="menu" title="Menu" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item"><span><MenuIcon/></span><span>Menu</span></FlexDiv> 
-                        <FlexDiv onClick={handleRoute} name="menu" title="Menu" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item"><span><TakeawayIcon/></span><span>Take away</span></FlexDiv> 
+                        {/* <FlexDiv onClick={handleRoute} name="menu" title="Menu" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item"><span><TakeawayIcon/></span><span>Take away</span></FlexDiv>  */}
                         <FlexDiv onClick={handleRoute} name="contact" title="Contact" direction="column" alignItem="center" margin="0.5em" maxWidth="60px" className="nav-item"><span><ContactIcon/></span><span>Contact</span></FlexDiv> 
                     </FlexDiv>
                 </FlexDiv>

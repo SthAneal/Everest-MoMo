@@ -88,6 +88,7 @@ const Title = styled.h2`
     text-transform:${props=>props.textTransform || "initial"};
     line-height:${props=>props.lineHeight || "1.5em"};
     font-style:${props=>props.fontStyle || "initial"};
+    font-family:${props=>props.fontFamily || "'Poppins', sans-serif"}
     word-spacing:0.3em;
 `
 
