@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 export default Axios.create({
-    baseURL:"https://everestmomoapi.herokuapp.com/",
+    baseURL:"https://everestmomoapi.herokuapp.com/api",
     withCredentials: false,
     headers:{
         'Access-Control-Allow-Origin':'*',
