@@ -23,11 +23,11 @@ const ContactForm = ()=>{
                 <input type="text" onMouseLeave={(e)=>inputHandle(e)} validation={{type:'String',minLength:'6'}} required/>
             </FlexDiv>
             <FlexDiv Width="100%" direction="row" flexGrow="1" flexWrap="wrap">
-                <FlexDiv Width="50%" direction="column"  className="contact-form__label-input" position="relative"  padding="2em 1em">
+                <FlexDiv Width="50%" minWidth="300px" direction="column"  className="contact-form__label-input" position="relative"  padding="2em 1em">
                     <label>Email</label>
                     <input type="email"  onMouseLeave={(e)=>inputHandle(e)} required/>
                 </FlexDiv>
-                <FlexDiv Width="50%" direction="column"  className="contact-form__label-input" position="relative"  padding="2em 1em">
+                <FlexDiv Width="50%" minWidth="300px" direction="column"  className="contact-form__label-input" position="relative"  padding="2em 1em">
                     <label>Phone no.</label>
                     <input type="number" onMouseLeave={(e)=>inputHandle(e)} required/>
                 </FlexDiv>
