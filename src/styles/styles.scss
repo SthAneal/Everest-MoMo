@@ -399,7 +399,6 @@ $Dim_Text:#514c4eb3;
         font-size: 1.3em;
         &:focus,&:active{
             outline:none;
-            background: transparent;
         }
     }
     &__btn{
@@ -508,6 +507,7 @@ $Dim_Text:#514c4eb3;
             background: transparent;
             &:focus,&:active{
                 outline:none;
+                background: transparent;
             }
         }
         &>textarea{
